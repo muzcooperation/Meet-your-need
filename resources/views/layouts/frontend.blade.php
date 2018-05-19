@@ -36,15 +36,15 @@
                 <option value="1">University</option>
                 <option value="2">Hospital</option>
                 <option value="3">Hotel</option>
-                <option value="4">Restranut</option>
+                <option value="4">Restaurant</option>
               </select>
             </div>
           </ul>
 
-          <form class="form-inline" action="">
-            <input class="form-control mr-sm-2" type="text" placeholder="Radius">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form>
+          <div class="form-inline">
+            <input id="radius" class="form-control mr-sm-2" type="number" placeholder="Radius in meters">
+            <button onclick="searchNearByLocations()" class="btn btn-success" type="submit">Search</button>
+          </div>
         </nav>
         
         
