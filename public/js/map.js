@@ -100,11 +100,22 @@ function createMarker(place) {
         width = parseInt(width);
 
         var thumbnail = place.photos ? place.photos[0].getUrl({maxWidth: width}) : place.icon;
+        var name = place.name ? place.name : 'No Name';
+        var address = placedetail.formatted_address ? placedetail.formatted_address : 'No Address';
+        var contact = placedetail.formatted_phone_number ? placedetail.formatted_phone_number : 'No Contact Info';
+        var reviews = placedetail.reviews;
 
         $('#thumbnail').attr('src', thumbnail);
-        $('#name').html('<strong>Name: </strong>' + place.name);
-        $('#address').html('<strong>Adress: </strong>' + placedetail.formatted_address);
-        $('#contact-info').html('<strong>Contact Info: </strong>' + placedetail.formatted_phone_number);
+        $('#name').html('<strong>Name: </strong>' + name);
+        $('#address').html('<strong>Adress: </strong>' + address);
+        $('#contact-info').html('<strong>Contact Info: </strong>' + contact);
+        $('#reviews-link').text('Reviews');
+        $('#reviews').html('<ul></ul>');
+
+        reviews.map((review) => {
+          $('#reviews').append('<li>' + review.author_name + '</li>');
+        });
+
         $('#mySidenav').css('width', '25%');
 
       }
