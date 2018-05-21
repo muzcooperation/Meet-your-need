@@ -15,6 +15,24 @@
             margin: 0;
             padding: 0;
           }
+
+          .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #fff;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+          }
+
+          @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+          }
         </style>
     </head>
     <body>
@@ -24,12 +42,6 @@
 
           <!-- Links -->
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link 1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link 2</a>
-            </li>
             <div class="dropdown mx-4">
               <select id='places' class="form-control">
                 <option selected disabled>Select Place</option>

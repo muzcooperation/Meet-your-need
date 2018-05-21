@@ -4,6 +4,7 @@ var currLat;
 var currLong;
 var markers = [];
 var bounds;
+var service;
 
 function showPosition(position) {
   currLat = position.coords.latitude;
@@ -25,7 +26,6 @@ function initMap() {
 }
 
 function searchNearByLocations() {
-  console.log(markers);
   if (markers.length) {
     deleteMarkers();
   } 
@@ -33,19 +33,19 @@ function searchNearByLocations() {
   var placeType = $('#places').find(":selected").text();
   placeType = placeType.toLowerCase();
   
-  if (placeType != 'Select Place') {
+  if (placeType != 'select place') {
     var radius = $('#radius').val();
 
     if (radius) {
       var location = {lat: currLat, lng: currLong};
       infowindow = new google.maps.InfoWindow();
-      var service = new google.maps.places.PlacesService(map);
+      service = new google.maps.places.PlacesService(map);
 
       service.nearbySearch({
         location: location,
         radius: radius,
         type: [placeType]
-      }, callback);
+      }, nearByPlaceCallback);
 
     } else {
       alert('please enter radius');
@@ -55,7 +55,7 @@ function searchNearByLocations() {
   }
 }
 
-function callback(results, status) {
+function nearByPlaceCallback(results, status) {
   console.log(results);
   if (results.length <= 0) {
     alert('No location found');
@@ -84,9 +84,31 @@ function createMarker(place) {
 
   bounds.extend(marker.getPosition());
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
+  google.maps.event.addListener(marker, 'click', () => {
+    // infowindow.setContent(place.name);
+    // infowindow.open(map, this);
+    var request = {
+      placeId: place.place_id
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.getDetails(request, (placedetail, status) => {
+      console.log(placedetail, 'dd', place);
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+        var width = $(document).width() * 0.25;
+        width = parseInt(width);
+
+        var thumbnail = place.photos ? place.photos[0].getUrl({maxWidth: width}) : place.icon;
+
+        $('#thumbnail').attr('src', thumbnail);
+        $('#name').html('<strong>Name: </strong>' + place.name);
+        $('#address').html('<strong>Adress: </strong>' + placedetail.formatted_address);
+        $('#contact-info').html('<strong>Contact Info: </strong>' + placedetail.formatted_phone_number);
+        $('#mySidenav').css('width', '25%');
+
+      }
+    });
   });
 }
 
