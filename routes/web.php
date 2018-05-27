@@ -22,3 +22,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('map', function () {
     return view('frontend.map');
 });
+//admin routes
+Route::name('admin.')->prefix('admin')->namespace('admin')->middleware('auth')->group(function () {
+
+    Route::get('home', function () {
+        return view('admin.home');
+    })->name('home');
+    Route::get('test', function () {
+        return view('admin.test');
+    })->name('test');
+
+    //restaurants
+    Route::resource('restaurants', 'RestaurantController');
+
+
+});
