@@ -24,3 +24,19 @@ Route::get('map', function () {
 });
 
 Route::post('location-detail', 'Frontend\LocationController@detail');	
+
+//admin routes
+Route::name('admin.')->prefix('admin')->namespace('admin')->middleware('auth')->group(function () {
+
+    Route::get('home', function () {
+        return view('admin.home');
+    })->name('home');
+    Route::get('test', function () {
+        return view('admin.test');
+    })->name('test');
+
+    //restaurants
+    Route::resource('restaurants', 'RestaurantController');
+
+
+});
