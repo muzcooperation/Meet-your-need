@@ -96,7 +96,7 @@ function createMarker(place) {
       console.log(placedetail, 'dd', place);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-        var width = $(document).width() * 0.25;
+        /*var width = $(document).width() * 0.25;
         width = parseInt(width);
 
         var thumbnail = place.photos ? place.photos[0].getUrl({maxWidth: width}) : place.icon;
@@ -112,11 +112,26 @@ function createMarker(place) {
         $('#reviews-link').text('Reviews');
         $('#reviews').html('<ul></ul>');
 
-        reviews.map((review) => {
-          $('#reviews').append('<li>' + review.author_name + '</li>');
-        });
+        if (reviews) {
+          reviews.map((review) => {
+            $('#reviews').append('<li>' + review.author_name + '</li>');
+          });
+        }
 
-        $('#mySidenav').css('width', '25%');
+        $('#mySidenav').css('width', '25%');*/
+
+        var form = document.createElement('form');
+        document.body.appendChild(form);
+        form.method = 'post';
+        form.action = 'http://localhost/places/public/location-detail';
+        for (var name in placedetail) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = placedetail[name];
+            form.appendChild(input);
+        }
+        form.submit();
 
       }
     });

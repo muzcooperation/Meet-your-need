@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('map', function () {
     return view('frontend.map');
 });
+
+Route::post('location-detail', 'Frontend\LocationController@detail');	
