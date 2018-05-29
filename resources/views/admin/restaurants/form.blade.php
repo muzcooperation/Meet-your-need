@@ -8,14 +8,14 @@
 
         {{csrf_field()}}
     <div class="box-body pl-4">
+            <div id="map"></div>
             <div class="py-4">
                 <button type="button" class="btn btn-success" onclick="openMap" data-target="#mapModal">Select a Location</button>
             </div>
             <div class="form-group">
                 <label for="program_name" class="col-sm-2 control-label">Program Name<span class="text-danger"> *</span></label>
                 <div class="col-sm-10">
-                    <input type="text" name="program_name" class="form-control" id="program_name" placeholder="Program Name"
-                    @if(isset($directory))value="{{$directory->title}}"@endif>
+                    <input type="text" name="program_name" class="form-control" id="program_name" placeholder="Program Name" value="{{old('program_name')}}">
                 </div>
 
                 @if ($errors->has('program_name'))
@@ -28,8 +28,7 @@
             <div class="form-group">
                 <label for="date" class="col-sm-2 control-label">Date<span class="text-danger"> *</span></label>
                 <div class="col-sm-10">
-                    <input type="date" name="date" class="form-control" id="date" placeholder="Program Date"
-                    @if(isset($directory))value="{{$directory->title}}"@endif>
+                    <input type="date" name="date" class="form-control" id="date" placeholder="Program Date" value="{{old('date')}}">
                 </div>
 
                 @if ($errors->has('date'))
@@ -42,8 +41,7 @@
             <div class="form-group">
                 <label for="department" class="col-sm-2 control-label">Department<span class="text-danger"> *</span></label>
                 <div class="col-sm-10">
-                    <input type="text" name="department" class="form-control" id="department" placeholder="Department"
-                    @if(isset($directory))value="{{$directory->title}}"@endif>
+                    <input type="text" name="department" class="form-control" id="department" placeholder="Department" value="{{old('department')}}">
                 </div>
 
                 @if ($errors->has('department'))
@@ -56,8 +54,7 @@
             <div class="form-group">
                 <label for="scholarship" class="col-sm-2 control-label">Scholarship<span class="text-danger"> *</span></label>
                 <div class="col-sm-10">
-                    <input type="text" name="scholarship" class="form-control" id="scholarship" placeholder="Scholarship"
-                    @if(isset($directory))value="{{$directory->title}}"@endif>
+                    <input type="text" name="scholarship" class="form-control" id="scholarship" placeholder="Scholarship" value="{{old('scholarship')}}">
                 </div>
 
                 @if ($errors->has('scholarship'))
@@ -85,8 +82,7 @@
             <div class="form-group">
                 <label for="image" class="col-sm-2 control-label">Image<span class="text-danger"> *</span></label>
                 <div class="col-sm-10">
-                    <input type="file" accept="image/gif, image/jpeg, image/png" name="image" class="form-control" id="image" placeholder="Image"
-                    @if(isset($directory))value="{{$directory->title}}"@endif>
+                    <input type="file" accept="image/gif, image/jpeg, image/png" name="image" class="form-control" id="image" placeholder="Image">
                 </div>
 
                 @if ($errors->has('image'))
@@ -95,23 +91,6 @@
                     </span>
                 @endif
             </div>
-
-            <!-- Modal -->
-            <!-- <div class="modal fade" id="mapModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        
-                        <div class="modal-body">
-                          <p>Some text in the modal.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                  
-                </div>
-            </div> -->
-
     </div>
     <div class="box-footer pl-4">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -120,7 +99,7 @@
 </div>
 
 
-<!--  <script>
+ <!-- <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
       // pick list containing a mix of places and predicted search terms.
@@ -206,6 +185,6 @@
         });
       }
 
-    </script> -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key={{config('constants.google_api_key')}}&libraries=places&callback=initAutocomplete"
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{config('constants.google_api_key')}}&libraries=places&callback=initAutocomplete"
          async defer></script> -->
