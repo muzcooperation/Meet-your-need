@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Restaurant;
+
+use Validator;
 
 class RestaurantController extends Controller
 {
@@ -35,7 +38,25 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'program_name' => 'required',
+            'date' => 'required',
+            'department' => 'required',
+            'scholarship' => 'required',
+            'criteria' => 'required',
+            'image' => 'required',
+
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        } else {
+            //Image uploading
+            Restaurant::create($request->all());
+
+            return $request;
+        }
     }
 
     /**
