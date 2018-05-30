@@ -19,6 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- custom css file -->
   <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
