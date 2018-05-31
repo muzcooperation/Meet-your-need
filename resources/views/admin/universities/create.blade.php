@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('title')
-New Restaurant
+New University
 @endsection
 @section('content')
-    @include('admin.restaurants.form')
+    @include('admin.universities.form')
 @endsection

@@ -1,5 +1,5 @@
 <div class="box box-primary">
-    <form action="@if(isset($directory)){{route('admin.restaurants.update',$directory->id)}}@else{{route('admin.restaurants.store')}}@endif" role="form" class="form-horizontal" method="post">
+    <form action="@if(isset($directory)){{route('admin.universities.update',$directory->id)}}@else{{route('admin.universities.store')}}@endif" role="form" class="form-horizontal" method="post">
         @if(isset($directory))
             {{method_field('PATCH')}}
         @else

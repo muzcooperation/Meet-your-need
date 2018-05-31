@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Restaurant;
+use App\University;
 
 use Validator;
 
-class RestaurantController extends Controller
+class UniversityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return view('admin.restaurants.index');
+        return view('admin.universities.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurants.create');
+        return view('admin.universities.create');
     }
 
     /**
@@ -50,15 +50,12 @@ class RestaurantController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()
-                        ->back()
-                        ->withInput()
-                        ->withErrors($validator);
+            return redirect()->back()->withErrors($validator);
         } else {
             //Image uploading
-            Restaurant::create($request->all());
+            University::create($request->all());
 
-            return $request;
+            return redirect()->route('admin.universities.index');
         }
     }
 
