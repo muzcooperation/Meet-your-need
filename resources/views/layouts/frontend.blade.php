@@ -62,5 +62,13 @@
         
         @yield('content')
       
+    <footer class="container-fluid">
+      <nav class="navbar fixed-bottom bg-dark text-white">
+        <p class="text-center">
+          &copy; Meet A Need
+        </p>
+      </nav>
+    </footer> 
+
     </body>
 </html>
