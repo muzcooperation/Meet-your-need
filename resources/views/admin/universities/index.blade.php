@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-Restaurants
+Universities
 @endsection
 
 @section('content')
@@ -9,12 +9,12 @@ Restaurants
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Restaurants Page</h1>
+            <h1 class="m-0 text-dark">Universities Page</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Restaurants Page</li>
+              <li class="breadcrumb-item active">Universities Page</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,8 +25,8 @@ Restaurants
 		<div class="card card-primary card-outline">
 	        <div class="card-header">
 	            <div class="input-group input-group-sm justify-content-end">
-	                <a href="{{ route('admin.restaurants.create') }}" class="btn btn-info">
-	                    <i class="fa fa-plus"></i> Create New Restaurant
+	                <a href="{{ route('admin.universities.create') }}" class="btn btn-info">
+	                    <i class="fa fa-plus"></i> Create New University
 	                </a>
 	            </div>
 	        </div>

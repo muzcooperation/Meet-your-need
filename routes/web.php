@@ -30,7 +30,7 @@ Route::name('admin.')->prefix('admin')->namespace('admin')->middleware('auth')->
     })->name('test');
 
     //restaurants
-    Route::resource('restaurants', 'RestaurantController');
+    Route::resource('universities', 'UniversityController');
 
 
 });

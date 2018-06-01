@@ -40,9 +40,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.restaurants.index')}}" class="nav-link">
+                <a href="{{route('admin.universities.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Restaurants</p>
+                  <p>Universities</p>
                 </a>
               </li>
             </ul>
