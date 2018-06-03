@@ -37,7 +37,7 @@ Route::name('admin.')->prefix('admin')->namespace('admin')->middleware('auth')->
 
 
 //frontend routes
-Route::prefix('frontend')->namespace('frontend')->group(function () {
+Route::namespace('frontend')->group(function () {
 
     Route::get('map', function () {
         return view('frontend.map');
@@ -54,5 +54,8 @@ Route::prefix('frontend')->namespace('frontend')->group(function () {
     });
 
     Route::post('location-detail', 'LocationController@detail');
+    Route::get('detail', function () {
+        return view('frontend.locationDetail');
+    })->name('detail');
 
 });

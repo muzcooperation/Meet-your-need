@@ -117,7 +117,7 @@
         });
       }
 
-        function showPosition(position) {
+      function showPosition(position) {
           currLat = position.coords.latitude;
           currLong = position.coords.longitude;
 

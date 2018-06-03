@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class LocationController extends Controller
 {
     public function detail(Request $request) {
-    	return $request;
+    	return redirect('detail');
     }
 }

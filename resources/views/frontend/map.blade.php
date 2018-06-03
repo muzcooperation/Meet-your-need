@@ -1,9 +1,17 @@
 @extends('layouts.frontend')
 
 @section('content')
+
 <div id="map"></div>
 
-<div id="mySidenav" class="sidenav px-2">
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-8" id="map"></div>
+    <div class="col-2"></div>
+  </div>
+</div> -->
+
+<!-- <div id="mySidenav" class="sidenav px-2">
   <img id="thumbnail"  src="">
   <p id="name"></p>
   <p id="address"></p>
@@ -17,7 +25,7 @@
       
     </div>
   </div>
-</div>
+</div> -->
 
 <script src="{{ asset('/js/map.js') }}"></script>
 

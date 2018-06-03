@@ -5,6 +5,15 @@ var currLong;
 var markers = [];
 var bounds;
 var service;
+var placeType;
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
 
 function showPosition(position) {
   currLat = position.coords.latitude;
@@ -15,6 +24,24 @@ function showPosition(position) {
       zoom: 20
   });
 
+  if (markers.length) {
+    deleteMarkers();
+  } 
+
+  placeType = getUrlVars()["loc"];
+
+  if (placeType) {
+    var radius = 5000;
+
+    var location = {lat: currLat, lng: currLong};
+    infowindow = new google.maps.InfoWindow();
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+      location: location,
+      radius: radius,
+      type: [placeType]
+    }, nearByPlaceCallback);
+  }
 }
 
 function initMap() {
@@ -26,29 +53,46 @@ function initMap() {
 }
 
 function searchNearByLocations() {
-  if (markers.length) {
-    deleteMarkers();
-  } 
-
-  var placeType = $('#places').find(":selected").text();
+  placeType = $('#places').find(":selected").text();
   placeType = placeType.toLowerCase();
   
   if (placeType != 'select place') {
-    var radius = $('#radius').val();
+  //Redirect with data
 
-    if (radius) {
+
+  /*  var form = document.createElement('form');
+    document.body.appendChild(form);
+    form.method = 'get';
+    form.action = 'http://localhost/places/public/frontend/map';
+    var input = document.createElement('input');
+    input.name = 'location';
+    input.value = placeType;
+    form.appendChild(input);
+    form.submit();*/
+
+
+    //Simple redirect
+
+    if (window.location.pathname.split("/").pop() == 'home') {
+      window.location = 'http://localhost/places/public/map?loc=' + placeType;
+    } else {
+      if (markers.length) {
+        deleteMarkers();
+      } 
+
+      var radius = 5000;
+
       var location = {lat: currLat, lng: currLong};
       infowindow = new google.maps.InfoWindow();
       service = new google.maps.places.PlacesService(map);
+
+  console.log(placeType, 'map');
 
       service.nearbySearch({
         location: location,
         radius: radius,
         type: [placeType]
       }, nearByPlaceCallback);
-
-    } else {
-      alert('please enter radius');
     }
   } else {
     alert('please select a place');
@@ -64,7 +108,6 @@ function nearByPlaceCallback(results, status) {
 
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     bounds = new google.maps.LatLngBounds();
-
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
     }
@@ -127,7 +170,7 @@ function createMarker(place) {
         for (var name in placedetail) {
             var input = document.createElement('input');
             input.type = 'hidden';
-            input.name = name;
+            input.name = 'location';
             input.value = placedetail[name];
             form.appendChild(input);
         }
