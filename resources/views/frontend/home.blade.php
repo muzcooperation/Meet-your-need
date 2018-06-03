@@ -64,7 +64,7 @@
 <div class="container my-5">
 
   <!-- Heading Row -->
-  <div class="row mt-5">
+  <div class="row home-div">
     <div id="carouselExampleControls" class="carousel slide col-lg-8" data-ride="carousel">
 	  <div class="carousel-inner">
 	    <div class="carousel-item active" style="height: 415px;">

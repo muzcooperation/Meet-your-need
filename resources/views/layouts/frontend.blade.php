@@ -30,6 +30,10 @@
             padding-top: 60px;
           }
 
+          .home-div {
+            margin-top: 80px;
+          }
+
           @media screen and (max-height: 450px) {
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
@@ -60,7 +64,7 @@
               <div class="form-inline">
                 <button onclick="searchNearByLocations()" class="btn btn-success" type="submit">Search</button>
               </div>
-            
+
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                   <a class="nav-link" href="#">Home
