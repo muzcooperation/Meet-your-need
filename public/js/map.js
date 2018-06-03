@@ -55,10 +55,13 @@ function initMap() {
 function searchNearByLocations() {
   placeType = $('#places').find(":selected").text();
   placeType = placeType.toLowerCase();
+
+  if (placeType == 'hotel') {
+    placeType = 'lodging';
+  }
   
   if (placeType != 'select place') {
   //Redirect with data
-
 
   /*  var form = document.createElement('form');
     document.body.appendChild(form);
@@ -86,7 +89,7 @@ function searchNearByLocations() {
       infowindow = new google.maps.InfoWindow();
       service = new google.maps.places.PlacesService(map);
 
-  console.log(placeType, 'map');
+      console.log(placeType, 'map');
 
       service.nearbySearch({
         location: location,
@@ -163,17 +166,15 @@ function createMarker(place) {
 
         $('#mySidenav').css('width', '25%');*/
 
-        var form = document.createElement('form');
+        var form = $('#locationDetail')[0];
         document.body.appendChild(form);
         form.method = 'post';
         form.action = 'http://localhost/places/public/location-detail';
-        for (var name in placedetail) {
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'location';
-            input.value = placedetail[name];
-            form.appendChild(input);
-        }
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'data';
+        input.value = JSON.stringify(placedetail);
+        form.appendChild(input);
         form.submit();
 
       }

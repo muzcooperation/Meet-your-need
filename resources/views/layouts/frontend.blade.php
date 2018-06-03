@@ -9,7 +9,7 @@
         <style>
           #map {
             height: 60%;
-            width: 70%;            
+            width: 100%;            
           }
           html, body {
             height: 100%;

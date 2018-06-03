@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 class LocationController extends Controller
 {
     public function detail(Request $request) {
-    	return redirect('detail');
+    	// return redirect('detail');
+    	dd(json_decode($request->data));
     }
 }
