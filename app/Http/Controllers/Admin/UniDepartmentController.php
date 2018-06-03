@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\University;
-
 use Validator;
-
-class UniversityController extends Controller
+class UniDepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class UniversityController extends Controller
      */
     public function index()
     {
-        return view('admin.universities.index', ['ppage'=>'university','page'=>'newUniversity']);
+        return view('admin.unidepartments.index', ['ppage'=>'university','page'=>'department']);
     }
 
     /**
@@ -27,7 +24,7 @@ class UniversityController extends Controller
      */
     public function create()
     {
-        return view('admin.universities.create', ['ppage'=>'university','page'=>'newUniversity']);
+        return view('admin.universities.create', ['ppage'=>'university','page'=>'department']);
     }
 
     /**
