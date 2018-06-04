@@ -24,8 +24,17 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <li class="nav-item">
+            <a href="{{route('admin.home')}}" class="nav-link {{($ppage =="home")? 'active' :''}}">
+              <i class="nav-icon fa fa-home"></i>
+              <p>
+                Home
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <!-- <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Starter Pages
@@ -34,7 +43,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('admin.home')}}" class="nav-link active">
+                <a href="{{route('admin.home')}}" class="nav-link ">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Home Page</p>
                 </a>
@@ -46,8 +55,31 @@
                 </a>
               </li>
             </ul>
+          </li> -->
+          <li class="nav-item has-treeview {{($ppage =="university")? 'menu-open' :''}}">
+            <a href="#" class="nav-link {{($ppage =="university")? 'active' :''}}">
+              <i class="nav-icon fa fa-university"></i>
+              <p>
+                Universities
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.universities.index')}}" class="nav-link {{($page =="newUniversity")? 'active' :''}}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>New University</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.unidepartments.index')}}" class="nav-link {{($page =="department")? 'active' :''}}"">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Departments</p>
+                </a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
@@ -55,7 +87,7 @@
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -23,14 +23,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::name('admin.')->prefix('admin')->namespace('admin')->middleware('auth')->group(function () {
 
     Route::get('home', function () {
-        return view('admin.home');
+        return view('admin.home', ['page'=>'home','ppage'=>'home']);
     })->name('home');
     Route::get('test', function () {
         return view('admin.test');
     })->name('test');
 
-    //restaurants
+    //universities
     Route::resource('universities', 'UniversityController');
+    //departments of universites
+    Route::resource('unidepartments', 'UniDepartmentController');
 
 
 });
