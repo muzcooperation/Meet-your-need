@@ -141,7 +141,6 @@ function createMarker(place) {
     service.getDetails(request, (placedetail, status) => {
       console.log(placedetail, 'dd', place);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-
         /*var width = $(document).width() * 0.25;
         width = parseInt(width);
 
